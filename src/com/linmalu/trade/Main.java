@@ -1,10 +1,14 @@
 package com.linmalu.trade;
 
+import org.bukkit.ChatColor;
+
 import com.linmalu.library.api.LinmaluMain;
 import com.linmalu.trade.data.GameData;
 
 public class Main extends LinmaluMain
 {
+	public static final String INVENTORY_NAME = ChatColor.BLACK + "LinmaluTrade - 린마루(Linmalu)";
+
 	private GameData gamedata;
 
 	public static Main getMain()
