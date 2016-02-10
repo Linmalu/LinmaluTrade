@@ -6,6 +6,7 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -52,11 +53,11 @@ public class Main_Event implements Listener
 			if(id != null)
 			{
 				int slot = event.getRawSlot();
-				if(slot < 9)
+				if((0 <= slot && slot < 9) || event.getClick() == ClickType.SHIFT_LEFT || event.getClick() == ClickType.DOUBLE_CLICK)
 				{
 					id.changeItem();
 				}
-				else if(9 <= slot && slot < 45)
+				if(9 <= slot && slot < 45)
 				{
 					event.setCancelled(true);
 				}
@@ -94,7 +95,11 @@ public class Main_Event implements Listener
 			{
 				for(int slot : event.getRawSlots())
 				{
-					if(9 <= slot && slot < 45)
+					if(slot < 9)
+					{
+						id.changeItem();
+					}
+					else if(9 <= slot && slot < 45)
 					{
 						event.setCancelled(true);
 					}

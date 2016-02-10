@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.linmalu.library.api.LinmaluActionbar;
+import com.linmalu.library.api.LinmaluTitle;
 import com.linmalu.trade.Main;
 
 public class InventoryData implements Runnable
@@ -31,10 +32,18 @@ public class InventoryData implements Runnable
 		switch(time)
 		{
 		case 0:
-			getPlayer1().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
-			getPlayer2().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
-			LinmaluActionbar.sendMessage(getPlayer1(), Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
-			LinmaluActionbar.sendMessage(getPlayer2(), Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
+			if(getPlayer1().isOnline())
+			{
+				getPlayer1().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
+				LinmaluActionbar.sendMessage(getPlayer1(), Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
+				LinmaluTitle.sendMessage(getPlayer1(), ChatColor.GREEN + "시간초과 " + ChatColor.GOLD + getName2(), Main.getMain().getTitle(), 20, 20, 20);
+			}
+			if(getPlayer2().isOnline())
+			{
+				getPlayer2().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
+				LinmaluActionbar.sendMessage(getPlayer2(), Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과의 거래가 시간초과로 취소되었습니다.");
+				LinmaluTitle.sendMessage(getPlayer2(), ChatColor.GREEN + "시간초과 " + ChatColor.GOLD + getName1(), Main.getMain().getTitle(), 20, 20, 20);
+			}
 			cancel();
 			break;
 		case -1:
@@ -152,8 +161,10 @@ public class InventoryData implements Runnable
 						}
 					}
 				}
-				players[0].sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과 거래가 완료되었습니다.");
-				players[1].sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과 거래가 완료되었습니다.");
+				getPlayer1().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.GREEN + "님과 거래가 완료되었습니다.");
+				getPlayer2().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.GREEN + "님과 거래가 완료되었습니다.");
+				LinmaluTitle.sendMessage(getPlayer1(), ChatColor.GREEN + "거래완료 " + ChatColor.GOLD + getName2(), Main.getMain().getTitle(), 20, 20, 20);
+				LinmaluTitle.sendMessage(getPlayer2(), ChatColor.GREEN + "거래완료 " + ChatColor.GOLD + getName1(), Main.getMain().getTitle(), 20, 20, 20);
 			}
 			else
 			{
@@ -168,8 +179,10 @@ public class InventoryData implements Runnable
 						players[1].getInventory().addItem(inventorys[1].getItem(i));
 					}
 				}
-				players[0].sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.YELLOW + "님과 거래가 취소되었습니다.");
-				players[1].sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.YELLOW + "님과 거래가 취소되었습니다.");
+				getPlayer1().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName2() + ChatColor.YELLOW + "님과 거래가 취소되었습니다.");
+				getPlayer2().sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + getName1() + ChatColor.YELLOW + "님과 거래가 취소되었습니다.");
+				LinmaluTitle.sendMessage(getPlayer1(), ChatColor.GREEN + "거래취소 " + ChatColor.GOLD + getName2(), Main.getMain().getTitle(), 20, 20, 20);
+				LinmaluTitle.sendMessage(getPlayer2(), ChatColor.GREEN + "거래취소 " + ChatColor.GOLD + getName1(), Main.getMain().getTitle(), 20, 20, 20);
 			}
 			for(int i = 0; i < players.length; i++)
 			{

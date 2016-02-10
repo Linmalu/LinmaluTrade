@@ -98,7 +98,7 @@ public class Main_Command implements CommandExecutor
 						target.sendMessage(Main.getMain().getTitle() + ChatColor.GOLD + player.getName() + ChatColor.GREEN + "님에게 거래신청이 들어왔습니다.");
 						target.sendMessage(Main.getMain().getTitle() + ChatColor.GRAY + "※ 인벤토리가 꽉찼을 경우에는 아이템이 떨어집니다. ※");
 						new LinmaluTellraw("$C:" + ChatColor.GOLD + "/거래 수락|/거래 수락|$" + ChatColor.WHITE + " 또는 " + "$C:" + ChatColor.GOLD + "/거래 취소|/거래 취소$").changeCmd().sendMessage(target);
-						LinmaluTitle.sendMessage(target, ChatColor.GREEN + "거래신청 - " + ChatColor.GOLD + player.getName(), Main.getMain().getTitle(), 20, 20, 20);
+						LinmaluTitle.sendMessage(target, ChatColor.GREEN + "거래신청 " + ChatColor.GOLD + player.getName(), Main.getMain().getTitle(), 20, 20, 20);
 						data.addInventoryData(player, target);
 					}
 				}
