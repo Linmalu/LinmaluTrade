@@ -150,12 +150,12 @@ public class Main_Command implements CommandExecutor
 			else
 			{
 				sender.sendMessage(ChatColor.GREEN + " = = = = = [ Linmalu Trade ] = = = = =");
-				LinmaluTellraw.sendCmdChat(sender, "/" + label + " 신청 ", ChatColor.GOLD + "/" + label + " 신청 <플레이어>" + ChatColor.GRAY + " : 플레이어에게 거래신청을 합니다.");
-				LinmaluTellraw.sendCmdChat(sender, "/" + label + " 수락 ", ChatColor.GOLD + "/" + label + " 수락" + ChatColor.GRAY + " : 거래신청을 수락합니다.");
-				LinmaluTellraw.sendCmdChat(sender, "/" + label + " 취소 ", ChatColor.GOLD + "/" + label + " 취소" + ChatColor.GRAY + " : 거래신청을 취소합니다.");
+				LinmaluTellraw.sendChat(sender, "/" + label + " 신청 ", ChatColor.GOLD + "/" + label + " 신청 <플레이어>" + ChatColor.GRAY + " : 플레이어에게 거래신청을 합니다.");
+				LinmaluTellraw.sendChat(sender, "/" + label + " 수락 ", ChatColor.GOLD + "/" + label + " 수락" + ChatColor.GRAY + " : 거래신청을 수락합니다.");
+				LinmaluTellraw.sendChat(sender, "/" + label + " 취소 ", ChatColor.GOLD + "/" + label + " 취소" + ChatColor.GRAY + " : 거래신청을 취소합니다.");
 				if(sender.isOp())
 				{
-					LinmaluTellraw.sendCmdChat(sender, "/" + label + " 리로드 ", ChatColor.GOLD + "/" + label + " 리로드 // reload" + ChatColor.GRAY + " : 설정파일을 다시 불러옵니다.");
+					LinmaluTellraw.sendChat(sender, "/" + label + " 리로드 ", ChatColor.GOLD + "/" + label + " 리로드 // reload" + ChatColor.GRAY + " : 설정파일을 다시 불러옵니다.");
 					LinmaluVersion.check(Main.getMain(), sender);
 				}
 				sender.sendMessage(ChatColor.YELLOW + "제작자 : " + ChatColor.AQUA + "린마루(Linmalu)" + ChatColor.WHITE + " - http://blog.linmalu.com");
